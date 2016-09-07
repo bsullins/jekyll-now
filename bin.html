@@ -29,6 +29,7 @@ layout: default
     })
 
   }
+
   $(document).ready(function(){
 
     var height		= $( window ).height(),
@@ -52,13 +53,12 @@ layout: default
 
 			}
 
-    $("#myGallery").attr('width',width);
-    $("#myGallery").attr('height',height);
+    // $("#myGallery").attr('width',width);
+    // $("#myGallery").attr('height',height);
 
     var img = '';
 
     locations.forEach(function(element, index, array){
-
 
       if(index==0){
         img = '<img src="'+locations[index]+'" class="active" />';
@@ -77,12 +77,12 @@ layout: default
   });
 </script>
 <style>
-
   #myGallery{
     position:relative;
+		height: 600px;
   }
   #myGallery img{
-    display:none;
+    display:block;
     position:absolute;
     top:0;
     left:0;
