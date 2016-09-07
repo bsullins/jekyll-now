@@ -10,7 +10,7 @@ The data here can be used to enhance your project. Using the native Google Sheet
 ## How to Use This Repo
 
 ### Video Tutorial
-<iframe src="https://drive.google.com/file/d/0B7qkFzXiR8w5TzJ4YlgzZE9MODQ/preview" width="640" height="480"></iframe>
+<iframe src="https://drive.google.com/file/d/0B7qkFzXiR8w5TzJ4YlgzZE9MODQ/preview" width="720" height="405"></iframe>
 
 ## Step by Step
 1. Browse to the Google Drive folder here
