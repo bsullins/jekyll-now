@@ -20,6 +20,7 @@ layout: default
 	var $_GET = getQueryParams(document.location.search); //has all the query string variables
 
   function swapImages(){
+
     var $active = $('#myGallery .active');
     var $next = ($('#myGallery .active').next().length > 0) ? $('#myGallery .active').next() : $('#myGallery img:first');
     $next.fadeIn(function(){
@@ -40,7 +41,8 @@ layout: default
 				start			= $_GET["start"],
 				end				= $_GET["end"],
 				title			= $_GET["title"],
-				locations	=	[];
+				locations	=	[],
+				suffix		= ":hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&:tabs=no&:toolbar=no&:animate_transition=yes&:display_static_image=no&:display_spinner=yes&:display_overlay=yes";
 
 
 		//add title to page
@@ -48,24 +50,22 @@ layout: default
 
 			for (i = start; i <= end; i++) {
 
-				locations.push(link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i);
+				locations.push(link+"&:showVizHome=no&:toolbar=no&:format=png&:display_overlay=yes&"+param+"="+i);
 			  // console.log("link: "+link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i );
 
 			}
 
-    // $("#myGallery").attr('width',width);
-    // $("#myGallery").attr('height',height);
 
     var img = '';
 
     locations.forEach(function(element, index, array){
 
       if(index==0){
-        img = '<img src="'+locations[index]+'" class="active" />';
+        img = '<img src="'+locations[index]+'" class="active first" />';
       } else {
         img = '<img src="'+locations[index]+'" />';
       }
-      console.log('index: '+index+' == '+img);
+      // console.log('index: '+index+' == '+img);
 
       $(img).appendTo("#myGallery");
 
@@ -73,7 +73,7 @@ layout: default
 
 
     // Change 3000 to whatever time interval you prefer
-    setInterval('swapImages()', 3000);
+    setInterval('swapImages()', 2300);
   });
 </script>
 <style>
