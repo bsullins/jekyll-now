@@ -5,7 +5,7 @@ permalink: /data/
 ---
 The data here can be used to enhance your project. Using the native Google Sheets connector in Tableau 10 you can easily incorporate any of these resources. Scroll down for [more info](#more)
 
-<iframe src="https://drive.google.com/embeddedfolderview?id=0B7qkFzXiR8w5aEttbWk4eS1xd1U#list" style="width:100%; height:600px; border:0;"></iframe>
+<iframe src="https://drive.google.com/embeddedfolderview?id=0B7qkFzXiR8w5aEttbWk4eS1xd1U#list" style="width:100%; height:400px; border:0;"></iframe>
 
 ## <a name="more">More Info</a>
 
