@@ -49,7 +49,7 @@ layout: default
 			for (i = start; i <= end; i++) {
 
 				locations.push(link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i);
-			  console.log("link: "+link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i );
+			  // console.log("link: "+link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i );
 
 			}
 
@@ -65,7 +65,7 @@ layout: default
       } else {
         img = '<img src="'+locations[index]+'" />';
       }
-      // console.log('index: '+index+' == '+img);
+      console.log('index: '+index+' == '+img);
 
       $(img).appendTo("#myGallery");
 
