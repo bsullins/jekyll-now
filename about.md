@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+We love telling engaging stories using data visualization techniques. Sometimes, those stories are better understood when they are in motion. This site is designed as a repository and utility to enable the Tableau community to tell these stories while simplifying the process of creating the animation.
 
-### More Information
+By publishing on this site you are releasing your work under the following license:
 
-A place to include any other types of information that you'd like to include about yourself.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
 
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
