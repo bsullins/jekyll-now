@@ -64,6 +64,7 @@ $( document ).ready(function() {
 				param: "required",
 				start: "required",
 				end: "required"
+
 			},
 			// Specify validation error messages
 			messages: {
@@ -102,6 +103,9 @@ $( document ).ready(function() {
 
     <label for="end">End</label>
     <input type="number" name="end" id="end" placeholder="ex. 2016 or 100 (numeric only)"/>
+
+		<label for="speed">Speed (seconds)</label>
+		<input type="number" step="any" name="speed" min="0" value="2">
 
 		<input type="submit" value="Animate Me!"/>
 

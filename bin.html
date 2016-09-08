@@ -31,7 +31,17 @@ layout: default
 
   }
 
-  $(document).ready(function(){
+	$(document).ready(function(){
+
+		$("#loading").html("<p>Please wait while we grab all the images from Tableau Public. This could take a minute.</p><img src='/images/ring.gif' style='margin-left:auto; margin-right:auto;'/>");
+
+	});
+
+
+	$(window).on('load', function() {
+
+		//reset loading messages
+		$("#loading").fadeOut();
 
     var height		= $( window ).height(),
 				width			= $( window ).width(),
@@ -41,6 +51,7 @@ layout: default
 				start			= $_GET["start"],
 				end				= $_GET["end"],
 				title			= $_GET["title"],
+				speed			= $_GET["speed"]*1000, //make it mil	liseconds
 				locations	=	[],
 				suffix		= ":hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&:tabs=no&:toolbar=no&:animate_transition=yes&:display_static_image=no&:display_spinner=yes&:display_overlay=yes";
 
@@ -50,7 +61,7 @@ layout: default
 
 			for (i = start; i <= end; i++) {
 
-				locations.push(link+"&:showVizHome=no&:toolbar=no&:format=png&:display_overlay=yes&"+param+"="+i);
+				locations.push(link+"&:showVizHome=no&:toolbar=no&:format=png&"+param+"="+i);
 			  // console.log("link: "+link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i );
 
 			}
@@ -73,7 +84,7 @@ layout: default
 
 
     // Change 3000 to whatever time interval you prefer
-    setInterval('swapImages()', 2300);
+    setInterval('swapImages()', speed);
   });
 </script>
 <style>
@@ -82,7 +93,7 @@ layout: default
 		height: 600px;
   }
   #myGallery img{
-    display:block;
+    display:none; /*  added so default active images only shows */
     position:absolute;
     top:0;
     left:0;
@@ -91,5 +102,6 @@ layout: default
     display:block;
   }
 </style>
+<div id="loading"></div>
 <div id="title"></div>
 <div id="myGallery"></div>
