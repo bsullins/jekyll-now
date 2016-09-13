@@ -47,7 +47,7 @@ layout: default
 			//show the page chrome
 			$("#chrome").hide(0);
 			$("#footer").hide(0);
-			$("#result").hide(0);
+			$("#embedLink").hide(0);
 			$("#main").attr("style", "max-width:none;");
 
 		}
@@ -105,6 +105,8 @@ layout: default
 
 		//fill in embed code
 		$("#result").val('<iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true"  src="'+window.location.href+'&fullscreen=y" height="'+height+'" width="'+width+'"></iframe>');
+		//full screen link
+		$("#fullLink").attr("href", window.location.href+"&fullscreen=y");
 
 
   });
@@ -140,6 +142,6 @@ layout: default
 <div id="title"></div>
 <div id="myGallery"></div>
 <div id="embedLink">
-	<p>Embed Code</p>
+	<p>Embed Code (<a id="fullLink" target="_blank">full screen</a>)</p>
 	<textarea id="result" value="" onClick="this.select();" ></textarea>
 </div>
