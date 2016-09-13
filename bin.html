@@ -4,20 +4,18 @@ layout: default
 <script>
 
 	function getQueryParams(qs) {
-    qs = qs.split("+").join(" ");
-    var params = {},
-        tokens,
-        re = /[?&]?([^=]+)=([^&]*)/g;
+		qs = qs.split("+").join(" ");
+		var params = {},
+				tokens,
+				re = /[?&]?([^=]+)=([^&]*)/g;
 
-    while (tokens = re.exec(qs)) {
-        params[decodeURIComponent(tokens[1])]
-            = decodeURIComponent(tokens[2]);
-    }
+		while (tokens = re.exec(qs)) {
+				params[decodeURIComponent(tokens[1])]
+						= decodeURIComponent(tokens[2]);
+		}
 
-    return params;
+		return params;
 	}
-
-	var $_GET = getQueryParams(document.location.search); //has all the query string variables
 
   function swapImages(){
 
@@ -43,8 +41,19 @@ layout: default
 		//reset loading messages
 		$("#loading").fadeOut();
 
-    var height		= $( window ).height(),
-				width			= $( window ).width(),
+		var $_GET = getQueryParams(document.location.search); //has all the query string variables
+
+		if($_GET["fullscreen"]=="y") {
+			//show the page chrome
+			$("#chrome").hide(0);
+			$("#footer").hide(0);
+			$("#result").hide(0);
+			$("#main").attr("style", "max-width:none;");
+
+		}
+
+    var height		= $( document ).height()-100,
+				width			= $( document ).width(),
 				size			= width + ',' + height,
 				link			= $_GET["link"],
 				param			= $_GET["param"],
@@ -54,13 +63,18 @@ layout: default
 				speed			= $_GET["speed"]*1000 || 2, //make it mil	liseconds
 				locations	=	[]
 
-
 		//add title to page
 		$("#title").append("<h1>"+title+"</h1>");
 
 			for (i = start; i <= end; i++) {
 
-				locations.push(link+"&:showVizHome=no&:toolbar=no&:format=png&"+param+"="+i);
+				if($_GET["fullscreen"]=="y") {
+					// show the page chrome
+					locations.push(link+"&:showVizHome=no&:toolbar=no&:format=png&:size="+size+"&"+param+"="+i); //with size
+				} else {
+					locations.push(link+"&:showVizHome=no&:toolbar=no&:format=png&"+param+"="+i);
+				}
+
 			  // console.log("link: "+link+"?:showVizHome=no&:embed=yes&:toolbar=no&:format=png&"+param+"="+i );
 
 			}
@@ -71,9 +85,9 @@ layout: default
     locations.forEach(function(element, index, array){
 
       if(index==0){
-        img = '<img src="'+locations[index]+'" class="active first" />';
+        img = '<img id="img-'+index+'" src="'+locations[index]+'" class="active first" />';
       } else {
-        img = '<img src="'+locations[index]+'" />';
+        img = '<img id="img-'+index+'" src="'+locations[index]+'" />';
       }
       // console.log('index: '+index+' == '+img);
 
@@ -81,15 +95,24 @@ layout: default
 
     })
 
+		//adjust size of myGallery
+		$("#myGallery")
+			.css("height", height)
+			.css("width", width);
 
     // Change 3000 to whatever time interval you prefer
     setInterval('swapImages()', speed);
+
+		//fill in embed code
+		$("#result").val('<iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true"  src="'+window.location.href+'&fullscreen=y" height="'+height+'" width="'+width+'"></iframe>');
+
+
   });
 </script>
 <style>
   #myGallery{
     position:relative;
-		height: 720px;
+		/*min-height: 700px;*/
   }
   #myGallery img{
     display:none; /*  added so default active images only shows */
@@ -100,7 +123,23 @@ layout: default
   #myGallery img.active{
     display:block;
   }
+	#title {
+		height:50px;
+	}
+	#result {
+	  height: 60px;
+	  width: 100%;
+	  white-space: pre-wrap;
+	  white-space: -moz-pre-wrap;
+	  white-space: -pre-wrap;
+	  white-space: -o-pre-wrap;
+	  word-wrap: break-word;
+	}
 </style>
 <div id="loading"></div>
 <div id="title"></div>
 <div id="myGallery"></div>
+<div id="embedLink">
+	<p>Embed Code</p>
+	<textarea id="result" value="" onClick="this.select();" ></textarea>
+</div>
