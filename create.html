@@ -79,8 +79,6 @@ $( document ).ready(function() {
 			},
 			submitHandler: function() {
 				$("#createForm").attr("action", "/bin");
-				form.submit();
-
 				//log event in segment
 				analytics.track('Bin Created', {
 					title: $("#title").val(),
@@ -90,6 +88,8 @@ $( document ).ready(function() {
 					end: $("#end").val(),
 					speed: $("#speed").val()
 				});
+				//submit form
+				form.submit();
 
 			}
 		});
