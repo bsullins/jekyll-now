@@ -80,6 +80,17 @@ $( document ).ready(function() {
 			submitHandler: function() {
 				$("#createForm").attr("action", "/bin");
 				form.submit();
+
+				//log event in segment
+				analytics.track('Bin Created', {
+					title: $("#title").val(),
+					link: $("#link").val(),
+					param: $("#param").val(),
+					start: $("#start").val(),
+					end: $("#end").val(),
+					speed: $("#speed").val()
+				});
+
 			}
 		});
 });
@@ -105,7 +116,7 @@ $( document ).ready(function() {
     <input type="number" name="end" id="end" placeholder="ex. 2016 or 100 (numeric only)"/>
 
 		<label for="speed">Speed (seconds)</label>
-		<input type="number" step="any" name="speed" min="0" value="2">
+		<input type="number" step="any" name="speed" id="speed" min="0" value="2">
 
 		<input type="submit" value="Animate Me!"/>
 
